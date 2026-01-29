@@ -1,0 +1,1247 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Tech Analyst Portfolio — Resume + Projects + Roadmap" />
+  <title>Xiyao Song — Tech Analyst Portfolio</title>
+
+  <style>
+    :root{
+      --bg: #0b1220;
+      --panel: #0f1a2e;
+      --panel2:#0b162a;
+      --text:#e7eefc;
+      --muted:#a7b4d6;
+      --muted2:#7e8cb3;
+      --line:#233458;
+      --line2:#1d2a4a;
+      --chip:#122345;
+      --accent:#7aa2ff;
+      --accent2:#8de0ff;
+      --good:#6ee7b7;
+      --warn:#fbbf24;
+      --shadow: 0 18px 50px rgba(0,0,0,.38);
+      --radius: 16px;
+      --radius2: 22px;
+      --max: 1120px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
+      background:
+        radial-gradient(1000px 600px at 20% -10%, rgba(122,162,255,.18), transparent 60%),
+        radial-gradient(900px 700px at 90% 10%, rgba(141,224,255,.14), transparent 55%),
+        radial-gradient(900px 700px at 60% 110%, rgba(110,231,183,.08), transparent 55%),
+        linear-gradient(180deg, #070c16, var(--bg) 18%, #070c16);
+      min-height:100vh;
+    }
+
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .container{max-width:var(--max); margin:0 auto; padding:0 18px}
+
+    /* --- Top Nav --- */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(12px);
+      background: rgba(7,12,22,.55);
+      border-bottom: 1px solid rgba(35,52,88,.55);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px; min-width: 210px;
+    }
+    .mark{
+      width:38px; height:38px; border-radius:12px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(141,224,255,.65), transparent 55%),
+        linear-gradient(135deg, rgba(122,162,255,.9), rgba(17,34,69,.9));
+      box-shadow: 0 10px 28px rgba(0,0,0,.35);
+      border:1px solid rgba(141,224,255,.25);
+      position:relative;
+      overflow:hidden;
+    }
+    .mark:after{
+      content:"";
+      position:absolute; inset:-40%;
+      background: linear-gradient(120deg, transparent 40%, rgba(255,255,255,.18), transparent 60%);
+      transform: rotate(10deg);
+      animation: shine 6s linear infinite;
+    }
+    @keyframes shine{
+      0%{transform:translateX(-40%) rotate(10deg)}
+      100%{transform:translateX(40%) rotate(10deg)}
+    }
+    .brand-title{
+      display:flex; flex-direction:column; line-height:1.1;
+    }
+    .brand-title strong{letter-spacing:.2px}
+    .brand-title span{color:var(--muted2); font-size:12px}
+
+    .nav-links{
+      display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end;
+    }
+    .link{
+      position:relative;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 12px;
+      border-radius:12px;
+      border:1px solid rgba(35,52,88,.55);
+      background: rgba(15,26,46,.45);
+      color: var(--muted);
+      transition: transform .15s ease, background .15s ease, border-color .15s ease, color .15s ease;
+      outline:none;
+    }
+    .link:hover, .link:focus-visible{
+      color: var(--text);
+      border-color: rgba(122,162,255,.55);
+      background: rgba(18,35,69,.65);
+      transform: translateY(-1px);
+      box-shadow: 0 12px 30px rgba(0,0,0,.25);
+    }
+    .link:focus-visible{box-shadow: 0 0 0 3px rgba(122,162,255,.25), 0 12px 30px rgba(0,0,0,.25)}
+    .link .dot{
+      width:8px; height:8px; border-radius:99px;
+      background: rgba(167,180,214,.45);
+      transition: background .15s ease, transform .15s ease;
+    }
+    .link:hover .dot, .link:focus-visible .dot{
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      transform: scale(1.15);
+    }
+
+    /* --- Hero --- */
+    .hero{padding:34px 0 10px}
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns:1fr; }
+      .brand{min-width:auto}
+    }
+
+    .card{
+      border-radius: var(--radius2);
+      border:1px solid rgba(35,52,88,.65);
+      background: linear-gradient(180deg, rgba(15,26,46,.72), rgba(11,22,42,.62));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .card-inner{padding:22px}
+
+    .kicker{
+      display:inline-flex; align-items:center; gap:8px;
+      font-family:var(--mono);
+      font-size:12px;
+      color: var(--muted2);
+      background: rgba(18,35,69,.65);
+      border:1px solid rgba(35,52,88,.75);
+      padding:7px 10px;
+      border-radius:999px;
+      margin-bottom:14px;
+    }
+    .kicker .pulse{
+      width:8px; height:8px; border-radius:999px;
+      background: var(--good);
+      box-shadow: 0 0 0 6px rgba(110,231,183,.12);
+    }
+
+    h1{
+      margin:0 0 10px;
+      font-size:42px;
+      letter-spacing:-.5px;
+      line-height:1.05;
+    }
+    .subtitle{
+      margin:0 0 14px;
+      color: var(--muted);
+      font-size:16px;
+      line-height:1.55;
+      max-width: 62ch;
+    }
+
+    .hero-metrics{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top:14px;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 11px;
+      border-radius:999px;
+      border:1px solid rgba(35,52,88,.65);
+      background: rgba(18,35,69,.55);
+      color: var(--muted);
+      font-size:13px;
+      white-space:nowrap;
+    }
+    .chip b{color: var(--text); font-weight:600}
+    .chip .badge{
+      font-family:var(--mono);
+      font-size:11px;
+      color: rgba(231,238,252,.85);
+      background: rgba(122,162,255,.18);
+      border:1px solid rgba(122,162,255,.35);
+      padding:3px 8px;
+      border-radius:999px;
+    }
+
+    .cta-row{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top:18px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:11px 14px;
+      border-radius:14px;
+      border:1px solid rgba(35,52,88,.7);
+      background: rgba(18,35,69,.45);
+      color: var(--text);
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+    }
+    .btn:hover, .btn:focus-visible{
+      transform: translateY(-1px);
+      border-color: rgba(122,162,255,.6);
+      background: rgba(18,35,69,.72);
+      outline:none;
+      box-shadow: 0 0 0 3px rgba(122,162,255,.22), 0 12px 30px rgba(0,0,0,.25);
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(122,162,255,.95), rgba(141,224,255,.55));
+      border-color: rgba(141,224,255,.35);
+      color: #07101f;
+      font-weight:700;
+    }
+    .btn.primary:hover, .btn.primary:focus-visible{
+      background: linear-gradient(135deg, rgba(141,224,255,.95), rgba(122,162,255,.75));
+      border-color: rgba(141,224,255,.55);
+    }
+    .btn .icon{width:18px; height:18px; opacity:.95}
+    .btn.primary .icon{opacity:1}
+
+    /* --- Mini sidebar card --- */
+    .mini{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      height:100%;
+    }
+    .avatar{
+      border-radius:18px;
+      border:1px solid rgba(35,52,88,.7);
+      overflow:hidden;
+      background: rgba(18,35,69,.55);
+      position:relative;
+    }
+    .avatar img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+      filter: saturate(1.05) contrast(1.02);
+    }
+    .avatar .caption{
+      position:absolute;
+      inset:auto 12px 12px 12px;
+      padding:10px 12px;
+      border-radius:14px;
+      background: rgba(7,12,22,.62);
+      border:1px solid rgba(35,52,88,.65);
+      backdrop-filter: blur(8px);
+      color: var(--muted);
+      font-size:12px;
+      line-height:1.35;
+    }
+
+    .contact{
+      display:grid;
+      gap:10px;
+    }
+    .contact a{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(35,52,88,.65);
+      background: rgba(18,35,69,.45);
+      color: var(--muted);
+      transition: transform .15s ease, border-color .15s ease, background .15s ease, color .15s ease;
+      outline:none;
+    }
+    .contact a:hover, .contact a:focus-visible{
+      transform: translateY(-1px);
+      border-color: rgba(141,224,255,.55);
+      background: rgba(18,35,69,.7);
+      color: var(--text);
+      box-shadow: 0 0 0 3px rgba(141,224,255,.18);
+    }
+    .contact .label{
+      display:flex; flex-direction:column; gap:3px;
+    }
+    .contact .label small{color: var(--muted2); font-family: var(--mono)}
+    .contact .arrow{opacity:.75}
+
+    /* --- Sections --- */
+    section{padding:18px 0}
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:12px;
+      margin: 10px 0 12px;
+    }
+    .section-title h2{
+      margin:0;
+      font-size:18px;
+      letter-spacing:.2px;
+    }
+    .section-title p{
+      margin:0;
+      color: var(--muted2);
+      font-size:13px;
+      font-family: var(--mono);
+    }
+    .divider{
+      height:1px;
+      background: linear-gradient(90deg, transparent, rgba(35,52,88,.9), transparent);
+      margin: 18px 0;
+    }
+
+    /* --- Grid blocks --- */
+    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+    @media (max-width: 980px){ .grid-2{grid-template-columns:1fr} }
+
+    .block{
+      border-radius: var(--radius);
+      border:1px solid rgba(35,52,88,.65);
+      background: rgba(15,26,46,.55);
+      overflow:hidden;
+    }
+    .block-inner{padding:16px}
+    .muted{color: var(--muted)}
+    .mono{font-family: var(--mono)}
+    .tiny{font-size:12px}
+
+    /* --- Skills --- */
+    .skills{
+      display:flex; flex-wrap:wrap; gap:8px;
+    }
+    .tag{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(35,52,88,.65);
+      background: rgba(18,35,69,.45);
+      color: var(--muted);
+      font-size:13px;
+      transition: border-color .15s ease, transform .15s ease, background .15s ease, color .15s ease;
+    }
+    .tag:hover{
+      border-color: rgba(122,162,255,.6);
+      background: rgba(18,35,69,.7);
+      transform: translateY(-1px);
+      color: var(--text);
+    }
+
+    /* --- Projects --- */
+    .projects{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    @media (max-width: 1080px){ .projects{grid-template-columns: repeat(2, 1fr)} }
+    @media (max-width: 720px){ .projects{grid-template-columns: 1fr} }
+
+    .project{
+      border-radius: var(--radius);
+      border:1px solid rgba(35,52,88,.65);
+      background: linear-gradient(180deg, rgba(15,26,46,.6), rgba(11,22,42,.55));
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      min-height: 280px;
+      transition: transform .16s ease, border-color .16s ease;
+    }
+    .project:hover{transform: translateY(-2px); border-color: rgba(122,162,255,.6)}
+    .thumb{
+      height:140px;
+      background: rgba(18,35,69,.45);
+      position:relative;
+      overflow:hidden;
+    }
+    .thumb img{width:100%; height:100%; object-fit:cover; opacity:.9}
+    .thumb:after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, transparent, rgba(11,18,32,.85));
+    }
+    .project-body{padding:14px; display:flex; flex-direction:column; gap:10px; flex:1}
+    .project-body h3{margin:0; font-size:15px; letter-spacing:.2px}
+    .project-body p{margin:0; color: var(--muted); font-size:13px; line-height:1.5}
+    .proj-meta{
+      display:flex; flex-wrap:wrap; gap:8px;
+      margin-top:auto;
+    }
+    .pill{
+      font-family: var(--mono);
+      font-size:11px;
+      color: rgba(231,238,252,.85);
+      background: rgba(122,162,255,.14);
+      border:1px solid rgba(122,162,255,.28);
+      padding:4px 8px;
+      border-radius:999px;
+    }
+
+    .proj-links{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top:2px;
+    }
+    .proj-links a{
+      position:relative;
+      display:inline-flex; align-items:center; gap:8px;
+      color: var(--muted);
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid rgba(35,52,88,.65);
+      background: rgba(18,35,69,.35);
+      transition: transform .15s ease, background .15s ease, border-color .15s ease, color .15s ease;
+      outline:none;
+    }
+    .proj-links a:hover, .proj-links a:focus-visible{
+      transform: translateY(-1px);
+      background: rgba(18,35,69,.72);
+      border-color: rgba(141,224,255,.55);
+      color: var(--text);
+      box-shadow: 0 0 0 3px rgba(141,224,255,.16);
+    }
+    .proj-links a:before{
+      content:"";
+      width:8px; height:8px; border-radius:99px;
+      background: rgba(167,180,214,.45);
+      transition: background .15s ease, transform .15s ease;
+    }
+    .proj-links a:hover:before, .proj-links a:focus-visible:before{
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      transform: scale(1.2);
+    }
+
+    /* --- Experience timeline --- */
+    .timeline{
+      position:relative;
+      padding-left: 16px;
+      display:grid;
+      gap:12px;
+    }
+    .timeline:before{
+      content:"";
+      position:absolute;
+      left:4px; top:10px; bottom:10px;
+      width:2px;
+      background: linear-gradient(180deg, rgba(122,162,255,.8), rgba(35,52,88,.3));
+      border-radius:99px;
+    }
+    .t-item{
+      position:relative;
+      padding:14px 14px 14px 16px;
+      border-radius: var(--radius);
+      border:1px solid rgba(35,52,88,.65);
+      background: rgba(18,35,69,.35);
+    }
+    .t-item:before{
+      content:"";
+      position:absolute;
+      left:-2px; top:18px;
+      width:12px; height:12px;
+      border-radius:99px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 6px rgba(122,162,255,.12);
+      border:1px solid rgba(141,224,255,.35);
+    }
+    .t-head{
+      display:flex; justify-content:space-between; align-items:flex-start; gap:12px;
+      flex-wrap:wrap;
+    }
+    .t-head h3{margin:0; font-size:14px}
+    .t-head .when{
+      font-family:var(--mono);
+      color: var(--muted2);
+      font-size:12px;
+      white-space:nowrap;
+    }
+    .t-sub{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top:6px;
+      color: var(--muted);
+      font-size:13px;
+    }
+    .t-sub span{
+      padding:4px 8px;
+      border-radius:999px;
+      background: rgba(15,26,46,.6);
+      border:1px solid rgba(35,52,88,.55);
+    }
+    .t-item ul{
+      margin:10px 0 0;
+      padding-left:18px;
+      color: var(--muted);
+      line-height:1.5;
+      font-size:13px;
+    }
+    .t-item li{margin:6px 0}
+
+    /* --- Roadmap (creative) --- */
+    .roadmap{
+      display:grid;
+      gap:12px;
+    }
+    .rm-row{
+      display:grid;
+      grid-template-columns: 140px 1fr;
+      gap:12px;
+      align-items:stretch;
+    }
+    @media (max-width: 720px){
+      .rm-row{grid-template-columns:1fr}
+    }
+    .rm-stage{
+      border-radius: var(--radius);
+      border:1px solid rgba(35,52,88,.65);
+      background: rgba(18,35,69,.35);
+      padding:14px;
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+    .rm-stage b{font-size:13px}
+    .rm-stage small{color:var(--muted2); font-family:var(--mono)}
+    .rm-body{
+      border-radius: var(--radius);
+      border:1px solid rgba(35,52,88,.65);
+      background: rgba(15,26,46,.55);
+      padding:14px;
+    }
+    .rm-body p{margin:0 0 10px; color:var(--muted); font-size:13px; line-height:1.55}
+    .rm-checks{
+      display:flex; flex-wrap:wrap; gap:8px;
+    }
+    .check{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid rgba(35,52,88,.65);
+      background: rgba(18,35,69,.45);
+      color: var(--muted);
+      font-size:12px;
+    }
+    .check i{
+      width:18px; height:18px; border-radius:8px;
+      display:inline-flex; align-items:center; justify-content:center;
+      font-style:normal;
+      border:1px solid rgba(141,224,255,.35);
+      background: rgba(141,224,255,.12);
+      color: rgba(231,238,252,.9);
+      font-family: var(--mono);
+      font-size:12px;
+    }
+
+    /* --- Footer --- */
+    footer{
+      padding:26px 0 40px;
+      color: var(--muted2);
+      font-size:12px;
+    }
+    .foot{
+      display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;
+      border-top:1px solid rgba(35,52,88,.55);
+      padding-top:16px;
+    }
+    .foot a{
+      padding:7px 10px;
+      border-radius:12px;
+      border:1px solid rgba(35,52,88,.55);
+      background: rgba(15,26,46,.5);
+      color: var(--muted);
+      transition: transform .15s ease, border-color .15s ease, background .15s ease, color .15s ease;
+      outline:none;
+    }
+    .foot a:hover, .foot a:focus-visible{
+      transform: translateY(-1px);
+      border-color: rgba(122,162,255,.6);
+      background: rgba(18,35,69,.72);
+      color: var(--text);
+      box-shadow: 0 0 0 3px rgba(122,162,255,.18);
+    }
+
+    /* Utility */
+    .sr-only{
+      position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+      overflow:hidden; clip:rect(0,0,0,0); border:0;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a class="brand" href="#top" aria-label="Home">
+          <div class="mark" aria-hidden="true"></div>
+          <div class="brand-title">
+            <strong>Xiyao Song</strong>
+            <span>Applied Analytics · Risk · Ops · Strategy</span>
+          </div>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary">
+          <a class="link" href="#projects"><span class="dot"></span>Projects</a>
+          <a class="link" href="#experience"><span class="dot"></span>Experience</a>
+          <a class="link" href="#roadmap"><span class="dot"></span>Roadmap</a>
+          <a class="link" href="#skills"><span class="dot"></span>Skills</a>
+          <a class="link" href="#education"><span class="dot"></span>Education</a>
+          <a class="link" href="#contact"><span class="dot"></span>Contact</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <main id="top" class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="card">
+          <div class="card-inner">
+            <div class="kicker"><span class="pulse" aria-hidden="true"></span><span>open to internships · summer 2026</span></div>
+
+            <h1>Modern, modest, data-forward<br/>Tech Analyst Portfolio</h1>
+
+            <p class="subtitle">
+              I build analytics that helps teams make decisions—mixing SQL, Python, and dashboards with consulting-style storytelling.
+              Strong at messy data → reproducible pipelines → crisp recommendations, with risk-aware validation and clear communication.
+            </p>
+
+            <div class="hero-metrics" aria-label="Highlights">
+              <div class="chip"><span class="badge">focus</span> <b>Analytics</b> → risk / ops / product</div>
+              <div class="chip"><span class="badge">stack</span> <b>Python</b> · SQL · Tableau</div>
+              <div class="chip"><span class="badge">style</span> <b>Exec-ready</b> insights & storytelling</div>
+              <div class="chip"><span class="badge">edge</span> <b>Systems</b> thinking (process + data)</div>
+            </div>
+
+            <div class="cta-row">
+              <a class="btn primary" href="#projects" aria-label="Jump to projects">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 2v10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M7 9l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M5 20h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                View Projects
+              </a>
+
+              <!-- Put your PDF in /assets and keep this name, or change it -->
+              <a class="btn" href="assets/Resume_XiyaoSong_FA26.pdf" target="_blank" rel="noopener">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-6Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M14 2v6h6" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+                Download Resume
+              </a>
+
+              <!-- Replace with your actual GitHub URL when ready -->
+              <a class="btn" href="https://github.com/yourusername" target="_blank" rel="noopener">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M9 19c-4 1.5-4-2.5-6-3m12 6v-3.5c0-1 .1-1.4-.5-2 2-.2 4-.9 4-4 0-.8-.3-1.5-.8-2.1.1-.2.4-1-.1-2.1 0 0-.7-.2-2.2.8a7.6 7.6 0 0 0-4 0C8.9 6.2 8.2 6.4 8.2 6.4c-.5 1.1-.2 1.9-.1 2.1-.5.6-.8 1.3-.8 2.1 0 3.1 2 3.8 4 4-.4.4-.5.9-.5 2V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                GitHub
+              </a>
+
+              <a class="btn" href="https://www.linkedin.com/in/xiyao-song/" target="_blank" rel="noopener">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2a4 4 0 0 1 2-3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M2 9h4v12H2V9Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M4 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+                LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <aside class="card mini" aria-label="Profile card">
+          <div class="avatar">
+            <!-- If you prefer no-face branding: use a clean desk photo / skyline / abstract -->
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=60" alt="Clean workspace image" />
+            <div class="caption">
+              Swap this image anytime. A clean “desk” photo works well for modest branding (no face needed).
+            </div>
+          </div>
+
+          <div class="card-inner">
+            <div class="section-title" style="margin-top:0">
+              <h2 id="contact">Contact</h2>
+              <p>hover to highlight</p>
+            </div>
+
+            <div class="contact" role="list">
+              <a role="listitem" href="mailto:erisong01@outlook.com">
+                <span class="label"><strong>Email</strong><small>erisong01@outlook.com</small></span>
+                <span class="arrow" aria-hidden="true">↗</span>
+              </a>
+              <a role="listitem" href="tel:+18148839996">
+                <span class="label"><strong>Phone</strong><small>+1 (814) 883-9996</small></span>
+                <span class="arrow" aria-hidden="true">↗</span>
+              </a>
+              <a role="listitem" href="https://www.linkedin.com/in/xiyao-song/" target="_blank" rel="noopener">
+                <span class="label"><strong>LinkedIn</strong><small>linkedin.com/in/xiyao-song</small></span>
+                <span class="arrow" aria-hidden="true">↗</span>
+              </a>
+              <!-- Replace with your real GitHub -->
+              <a role="listitem" href="https://github.com/yourusername" target="_blank" rel="noopener">
+                <span class="label"><strong>GitHub</strong><small>github.com/yourusername</small></span>
+                <span class="arrow" aria-hidden="true">↗</span>
+              </a>
+              <a role="listitem" href="#projects">
+                <span class="label"><strong>Portfolio</strong><small>selected work + case studies</small></span>
+                <span class="arrow" aria-hidden="true">↘</span>
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="divider"></div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-title">
+        <h2>Selected Projects</h2>
+        <p>case-study style · measurable · readable</p>
+      </div>
+
+      <div class="projects" aria-label="Project cards">
+
+        <!-- Project 1 -->
+        <article class="project">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=60" alt="Dashboard thumbnail" />
+          </div>
+          <div class="project-body">
+            <h3>Starbucks Store Portfolio Analysis (Tableau)</h3>
+            <p>
+              Built a decision-ready dashboard for store performance and market patterns, with clear KPI definitions and
+              a tight “one-slide takeaway” for stakeholders.
+            </p>
+            <div class="proj-meta">
+              <span class="pill">Tableau</span>
+              <span class="pill">SQL</span>
+              <span class="pill">ROI framing</span>
+              <span class="pill">Storytelling</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://example.com/starbucks" target="_blank" rel="noopener">Write-up</a>
+              <a href="https://github.com/yourusername/starbucks-portfolio" target="_blank" rel="noopener">Repo</a>
+              <a href="#case-1">Case Notes</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=1400&q=60" alt="Model thumbnail" />
+          </div>
+          <div class="project-body">
+            <h3>Customer Spend Prediction (ML + Validation)</h3>
+            <p>
+              Built a regression pipeline with feature engineering, model comparison, and sanity checks.
+              Focus: trustworthy validation and “what can go wrong” documentation.
+            </p>
+            <div class="proj-meta">
+              <span class="pill">Python</span>
+              <span class="pill">sklearn</span>
+              <span class="pill">Model QA</span>
+              <span class="pill">Explainability</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://example.com/spend-model" target="_blank" rel="noopener">Write-up</a>
+              <a href="https://github.com/yourusername/spend-prediction" target="_blank" rel="noopener">Repo</a>
+              <a href="#roadmap">How I Work</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1400&q=60" alt="Data engineering thumbnail" />
+          </div>
+          <div class="project-body">
+            <h3>Yelp + OpenStreetMap PostgreSQL (Schema + Pipeline)</h3>
+            <p>
+              Designed a relational schema, ingestion checks, and reproducible transforms for large public datasets.
+              Outcome: fewer broken joins, faster iteration, cleaner handoffs.
+            </p>
+            <div class="proj-meta">
+              <span class="pill">PostgreSQL</span>
+              <span class="pill">ETL</span>
+              <span class="pill">Data modeling</span>
+              <span class="pill">QA</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://example.com/yelp-osm" target="_blank" rel="noopener">Architecture</a>
+              <a href="https://github.com/yourusername/yelp-osm-postgres" target="_blank" rel="noopener">Repo</a>
+              <a href="#experience">Related Exp</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="project">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?auto=format&fit=crop&w=1400&q=60" alt="Geo analytics thumbnail" />
+          </div>
+          <div class="project-body">
+            <h3>Geo Analytics: Location Data → Strategy Recommendations</h3>
+            <p>
+              Spatial joins, density insights, and practical trade-offs. Focused on “decision-ready” outputs
+              rather than just cool maps.
+            </p>
+            <div class="proj-meta">
+              <span class="pill">GeoPandas</span>
+              <span class="pill">OSM</span>
+              <span class="pill">Visualization</span>
+              <span class="pill">Strategy</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://example.com/geo" target="_blank" rel="noopener">Map demo</a>
+              <a href="https://github.com/yourusername/geo-analytics" target="_blank" rel="noopener">Repo</a>
+              <a href="#skills">Skills</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 5 -->
+        <article class="project">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1400&q=60" alt="Quant finance thumbnail" />
+          </div>
+          <div class="project-body">
+            <h3>Options Pricing Toolkit (Python)</h3>
+            <p>
+              Implemented and compared Black–Scholes, binomial trees, and Monte Carlo simulation.
+              Emphasis: assumptions, sensitivities, and validation against baseline cases.
+            </p>
+            <div class="proj-meta">
+              <span class="pill">Python</span>
+              <span class="pill">Simulation</span>
+              <span class="pill">Model comparison</span>
+              <span class="pill">Sensitivity</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://example.com/options" target="_blank" rel="noopener">Write-up</a>
+              <a href="https://github.com/yourusername/options-pricing" target="_blank" rel="noopener">Repo</a>
+              <a href="#roadmap">How I Work</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 6 -->
+        <article class="project">
+          <div class="thumb">
+            <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=1400&q=60" alt="Market strategy thumbnail" />
+          </div>
+          <div class="project-body">
+            <h3>Market Structure Modeling (Renewables)</h3>
+            <p>
+              Modeled Cournot / Bertrand / Stackelberg competition to analyze pricing strategy trade-offs
+              in energy markets, translating theory into actionable framing.
+            </p>
+            <div class="proj-meta">
+              <span class="pill">Economics</span>
+              <span class="pill">Strategy</span>
+              <span class="pill">Modeling</span>
+              <span class="pill">Decision framing</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://example.com/market-structure" target="_blank" rel="noopener">Slides</a>
+              <a href="https://github.com/yourusername/market-structure" target="_blank" rel="noopener">Repo</a>
+              <a href="#case-1">Case Notes</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="divider"></div>
+
+      <div id="case-1" class="grid-2" aria-label="Case notes">
+        <div class="block">
+          <div class="block-inner">
+            <div class="section-title" style="margin-top:0">
+              <h2>Case Notes</h2>
+              <p>how I think</p>
+            </div>
+            <p class="muted" style="margin:0; line-height:1.6; font-size:13px">
+              <span class="mono">Problem →</span> What decision is blocked? Who owns it? What metric moves?<br/>
+              <span class="mono">Data →</span> Source trust, freshness, missingness, definitions, and IDs.<br/>
+              <span class="mono">Method →</span> Simple first; add complexity only if it changes decisions.<br/>
+              <span class="mono">Output →</span> Dashboard + one-slide takeaway + risk register + next steps.
+            </p>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block-inner">
+            <div class="section-title" style="margin-top:0">
+              <h2>Impact Framing</h2>
+              <p>measurable</p>
+            </div>
+            <p class="muted" style="margin:0; line-height:1.6; font-size:13px">
+              • Reduced manual reporting via automation + guardrails<br/>
+              • Improved data reliability (fewer broken joins, cleaner keys, clearer definitions)<br/>
+              • Enabled faster decisions with consistent KPIs + exec-ready visuals
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="section-title">
+        <h2>Experience</h2>
+        <p>timeline · outcomes · ownership</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="block">
+          <div class="block-inner">
+            <div class="section-title" style="margin-top:0">
+              <h2>Timeline</h2>
+              <p>selected roles</p>
+            </div>
+
+            <div class="timeline">
+
+              <div class="t-item">
+                <div class="t-head">
+                  <h3>Machine Learning Research Assistant — Obringer Lab</h3>
+                  <div class="when">Jan 2025 — Jun 2025</div>
+                </div>
+                <div class="t-sub">
+                  <span>ML modeling</span>
+                  <span>Climate-energy data</span>
+                  <span>Reproducible notebooks</span>
+                </div>
+                <ul>
+                  <li>Built and evaluated models linking weather/climate features to renewable generation signals.</li>
+                  <li>Documented assumptions, limitations, and sensitivity checks for non-technical audiences.</li>
+                  <li>Delivered results as clear narratives + visuals (what changed, why it matters, what to do next).</li>
+                </ul>
+              </div>
+
+              <div class="t-item">
+                <div class="t-head">
+                  <h3>Co-Founder & Quantitative Analyst — Enerquest Consulting LLC</h3>
+                  <div class="when">Jun 2024 — Jun 2025</div>
+                </div>
+                <div class="t-sub">
+                  <span>Client-ready outputs</span>
+                  <span>Quant + story</span>
+                  <span>Execution</span>
+                </div>
+                <ul>
+                  <li>Produced decision-ready analysis (risk-aware framing, metrics discipline, and clear next steps).</li>
+                  <li>Built lightweight toolkits (SQL + Python) to speed up recurring work and reduce errors.</li>
+                  <li>Practiced “no fluff” communication: problem → analysis → decision → actions.</li>
+                </ul>
+              </div>
+
+              <div class="t-item">
+                <div class="t-head">
+                  <h3>Business Technology Solutions Intern — Deloitte Consulting</h3>
+                  <div class="when">Aug 2021 — Nov 2021</div>
+                </div>
+                <div class="t-sub">
+                  <span>SAP</span>
+                  <span>Process improvement</span>
+                  <span>Cross-functional</span>
+                </div>
+                <ul>
+                  <li>Supported SAP system updates and implementation risk assessment in a client environment.</li>
+                  <li>Coordinated across modules and stakeholders, translating requirements into clear deliverables.</li>
+                  <li>Helped standardize workflow inputs to reduce handoff friction and rework.</li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block-inner">
+            <div class="section-title" style="margin-top:0">
+              <h2>Signature Strengths</h2>
+              <p>how teams use me</p>
+            </div>
+
+            <div class="roadmap">
+              <div class="rm-row">
+                <div class="rm-stage">
+                  <b>Clarify</b>
+                  <small>scope + metric</small>
+                </div>
+                <div class="rm-body">
+                  <p>Turn fuzzy asks into crisp questions. Define success, constraints, and “what decision changes” before touching the data.</p>
+                  <div class="rm-checks">
+                    <span class="check"><i>1</i> North-star metric</span>
+                    <span class="check"><i>2</i> Stakeholder map</span>
+                    <span class="check"><i>3</i> Risk register</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="rm-row">
+                <div class="rm-stage">
+                  <b>Build</b>
+                  <small>clean + validate</small>
+                </div>
+                <div class="rm-body">
+                  <p>Make the pipeline reliable. Add sanity checks so errors are visible and fixes are fast.</p>
+                  <div class="rm-checks">
+                    <span class="check"><i>4</i> Data QA</span>
+                    <span class="check"><i>5</i> Reproducible steps</span>
+                    <span class="check"><i>6</i> Versioning</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="rm-row">
+                <div class="rm-stage">
+                  <b>Decide</b>
+                  <small>ship + explain</small>
+                </div>
+                <div class="rm-body">
+                  <p>Deliver a decision-ready output: dashboard + one-slide takeaway + “what to do next” (including trade-offs).</p>
+                  <div class="rm-checks">
+                    <span class="check"><i>7</i> Clear narrative</span>
+                    <span class="check"><i>8</i> Impact estimate</span>
+                    <span class="check"><i>9</i> Next actions</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="section-title" style="margin-top:0">
+              <h2>Signals I Care About</h2>
+              <p>small details, big results</p>
+            </div>
+            <div class="skills">
+              <span class="tag">Definition discipline</span>
+              <span class="tag">Data integrity & IDs</span>
+              <span class="tag">Model sanity checks</span>
+              <span class="tag">Bias / leakage awareness</span>
+              <span class="tag">Slide-ready summarization</span>
+              <span class="tag">Stakeholder empathy</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section id="roadmap">
+      <div class="section-title">
+        <h2>90-Day Roadmap (If You Hire Me)</h2>
+        <p>practical · structured · low-ego</p>
+      </div>
+
+      <div class="block">
+        <div class="block-inner">
+          <div class="roadmap">
+            <div class="rm-row">
+              <div class="rm-stage">
+                <b>Days 0–14</b>
+                <small>learn fast</small>
+              </div>
+              <div class="rm-body">
+                <p>Get context, understand the data landscape, and ship something small but real to earn trust.</p>
+                <div class="rm-checks">
+                  <span class="check"><i>A</i> stakeholder interviews</span>
+                  <span class="check"><i>B</i> metric definitions</span>
+                  <span class="check"><i>C</i> quick-win dashboard</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="rm-row">
+              <div class="rm-stage">
+                <b>Days 15–45</b>
+                <small>stabilize</small>
+              </div>
+              <div class="rm-body">
+                <p>Harden the pipeline, create QA checks, reduce manual work, and make reporting consistent.</p>
+                <div class="rm-checks">
+                  <span class="check"><i>D</i> automated checks</span>
+                  <span class="check"><i>E</i> docs + handoffs</span>
+                  <span class="check"><i>F</i> single source of truth</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="rm-row">
+              <div class="rm-stage">
+                <b>Days 46–90</b>
+                <small>scale</small>
+              </div>
+              <div class="rm-body">
+                <p>Deliver an end-to-end case study: decision, impact, and what’s next. Build a reusable playbook.</p>
+                <div class="rm-checks">
+                  <span class="check"><i>G</i> impact measurement</span>
+                  <span class="check"><i>H</i> dashboard v2</span>
+                  <span class="check"><i>I</i> playbook template</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <p class="muted tiny" style="margin:0">
+            Tip: swap the above with your real internship/class project rhythm. Hiring managers love sequencing + ownership, not just tools.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-title">
+        <h2>Skills</h2>
+        <p>stack · analytics · communication</p>
+      </div>
+
+      <div class="grid-2">
+        <div class="block">
+          <div class="block-inner">
+            <div class="section-title" style="margin-top:0">
+              <h2>Technical</h2>
+              <p>tools I ship with</p>
+            </div>
+            <div class="skills">
+              <span class="tag">Python (pandas, sklearn)</span>
+              <span class="tag">SQL (Postgres)</span>
+              <span class="tag">Tableau / BI</span>
+              <span class="tag">Git/GitHub</span>
+              <span class="tag">ETL & data modeling</span>
+              <span class="tag">GeoPandas / GIS</span>
+              <span class="tag">APIs & automation</span>
+              <span class="tag">SAP (FI/CO, PP, MM)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="block-inner">
+            <div class="section-title" style="margin-top:0">
+              <h2>Analyst Toolkit</h2>
+              <p>the “how”</p>
+            </div>
+            <div class="skills">
+              <span class="tag">Problem framing</span>
+              <span class="tag">KPI design</span>
+              <span class="tag">Experiment thinking</span>
+              <span class="tag">Model validation</span>
+              <span class="tag">Stakeholder comms</span>
+              <span class="tag">Deck writing</span>
+              <span class="tag">Risk-aware reasoning</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="section-title">
+        <h2>Education</h2>
+        <p>selected programs</p>
+      </div>
+
+      <div class="block">
+        <div class="block-inner">
+          <div class="grid-2">
+            <div>
+              <h3 style="margin:0 0 6px; font-size:14px">Columbia University</h3>
+              <p class="muted" style="margin:0 0 10px; font-size:13px; line-height:1.6">
+                M.S. in Applied Analytics<br/>
+                <span class="mono tiny">Aug 2025 — Dec 2026</span>
+              </p>
+              <div class="skills">
+                <span class="tag">Machine Learning</span>
+                <span class="tag">Data Engineering</span>
+                <span class="tag">Strategy & Analytics</span>
+                <span class="tag">Capstone</span>
+              </div>
+            </div>
+
+            <div>
+              <h3 style="margin:0 0 6px; font-size:14px">Pennsylvania State University</h3>
+              <p class="muted" style="margin:0 0 10px; font-size:13px; line-height:1.6">
+                B.S. in Finance; Earth Sciences & Policy<br/>
+                <span class="mono tiny">Aug 2019 — May 2024</span>
+              </p>
+              <div class="skills">
+                <span class="tag">Statistics</span>
+                <span class="tag">Economics</span>
+                <span class="tag">Policy writing</span>
+                <span class="tag">GIS / spatial analysis</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <p class="muted tiny" style="margin:0">
+            Awards: Dean’s List; Robert F. Schmalz Award in Geosciences.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="foot">
+        <div>
+          <span class="mono">©</span> <span id="year"></span> Your Name · built with plain HTML/CSS
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap">
+          <a href="#top">Back to top ↑</a>
+          <a href="mailto:your.email@example.com">Email</a>
+          <a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // tiny JS for current year (safe, optional)
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+s
